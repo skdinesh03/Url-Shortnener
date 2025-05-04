@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Free URL Shortener</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+      text-align: center;
+      padding: 50px;
+    }
+    input, button {
+      padding: 10px;
+      margin: 10px;
+      width: 80%;
+      max-width: 400px;
+      font-size: 16px;
+    }
+    #shortened {
+      margin-top: 20px;
+      font-weight: bold;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+  <h1>Free URL Shortener & Earn Money</h1>
+  <p>Paste your long URL below:</p>
+  <input type="text" id="longUrl" placeholder="https://example.com" />
+  <br />
+  <button onclick="shortenUrl()">Shorten & Earn</button>
+  <div id="shortened"></div>
+
+  <script>
+    function shortenUrl() {
+      const inputUrl = document.getElementById("longUrl").value.trim();
+      if (!inputUrl) {
+        alert("Please enter a valid URL.");
+        return;
+      }
+
+      // Replace YOUR_ID with your ShrinkMe ID
+      const shrinkUrl = "https://shrinkme.io/st?api=b2fc1e069087e9f3a036dcba1578145ffad94fa3&url=" + encodeURIComponent(inputUrl);
+
+      // You can also redirect directly like:
+      const userLink = "https://shrinkme.io/" + encodeURIComponent(inputUrl);
+
+      document.getElementById("shortened").innerHTML =
+        `Shortened URL: <a href="${userLink}" target="_blank">${userLink}</a>`;
+    }
+  </script>
+</body>
+</html>
